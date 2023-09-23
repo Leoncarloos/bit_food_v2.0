@@ -12,8 +12,7 @@ public class PlatoService {
     PlatoRepository platoRepository;
 
     public Plato listarPlatos(Long PlatoId){
-        return platoRepository.findById(PlatoId)
-                .orElseThrow(()->new OpenApiResourceNotFoundException("No existe el plato con el Id "+PlatoId));
+        return platoRepository.findById(PlatoId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el plato con el Id "+PlatoId));
 
     }
 
@@ -22,8 +21,7 @@ public class PlatoService {
     }
 
     public Plato eliminarPlato (Long platoId){
-        Plato plato = platoRepository.findById(platoId)
-                .orElseThrow(()->new OpenApiResourceNotFoundException("No existe el plato con Id "+platoId));
+        Plato plato = platoRepository.findById(platoId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el plato con Id "+platoId));
         platoRepository.deleteById(platoId);
         return plato;
     }

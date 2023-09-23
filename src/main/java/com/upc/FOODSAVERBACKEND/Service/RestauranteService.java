@@ -22,9 +22,7 @@ public class RestauranteService {
         return restauranteRepository.findAll();
     }
 
-    public Restaurante listarRestaurantePorId(Long restauranteId){
-        return restauranteRepository.findById(restauranteId).orElseThrow(()->new OpenApiResourceNotFoundException("No se encontró el restaurante con el Id "+restauranteId));
-    }
+    public Restaurante listarRestaurantePorId(Long restauranteId){return restauranteRepository.findById(restauranteId).orElseThrow(()->new OpenApiResourceNotFoundException("No se encontró el restaurante con el Id "+restauranteId));}
 
     public Restaurante insertarRestaurante(RestauranteDto restauranteDetalles){
         Restaurante restaurante =new Restaurante();

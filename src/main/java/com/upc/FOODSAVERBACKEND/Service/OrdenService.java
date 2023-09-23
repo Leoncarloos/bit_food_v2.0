@@ -29,8 +29,8 @@ public class OrdenService {
     public List<Orden> buscarOrdenPorCliente(Long clienteId){return ordenRepository.buscarOrdenPorCliente(clienteId);}
 
 
-    public Orden buscarOrdenPorId(Long orderId){
-        return ordenRepository.findById(orderId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe la orden con Id "+orderId));
+    public Orden buscarOrdenPorId(Long ordenId){
+        return ordenRepository.findById(ordenId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe la orden con Id "+ordenId));
     }
 
     public Orden insertarOrden(OrdenDto ordenDetalles){

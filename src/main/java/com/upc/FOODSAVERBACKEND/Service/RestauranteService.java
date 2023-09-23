@@ -23,7 +23,7 @@ public class RestauranteService {
     }
 
     public Restaurante listarRestaurantePorId(Long restauranteId){
-        return restauranteRepository.findById(restauranteId).orElseThrow(()->new OpenApiResourceNotFoundException("No se encontró la mystery box con el Id "+restauranteId));
+        return restauranteRepository.findById(restauranteId).orElseThrow(()->new OpenApiResourceNotFoundException("No se encontró el restaurante con el Id "+restauranteId));
     }
 
     public Restaurante insertarRestaurante(RestauranteDto restauranteDetalles){

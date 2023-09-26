@@ -1,5 +1,6 @@
 package com.upc.FOODSAVERBACKEND.Service;
 
+import com.upc.FOODSAVERBACKEND.Model.Entities.Cliente;
 import com.upc.FOODSAVERBACKEND.Model.Entities.Plato;
 import com.upc.FOODSAVERBACKEND.Repository.PlatoRepository;
 import org.springdoc.api.OpenApiResourceNotFoundException;
@@ -26,4 +27,11 @@ public class PlatoService {
         return plato;
     }
 
+    public Plato actualizarPlato (Long platoId, Plato platoDetalle){
+        Plato plato = platoRepository.findById(platoId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe plato con el Id "+platoId));
+        plato.setNombre(platoDetalle.getNombre());
+        plato.setDescripcion(platoDetalle.getDescripcion());
+        plato.setPrecio(platoDetalle.getPrecio());
+        return platoRepository.save(plato);
+    }
 }

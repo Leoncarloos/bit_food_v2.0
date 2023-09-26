@@ -1,6 +1,7 @@
 package com.upc.FOODSAVERBACKEND.Controller;
 
         import com.upc.FOODSAVERBACKEND.Model.Dtos.RestauranteDto;
+        import com.upc.FOODSAVERBACKEND.Model.Entities.Cliente;
         import com.upc.FOODSAVERBACKEND.Model.Entities.Restaurante;
         import com.upc.FOODSAVERBACKEND.Service.RestauranteService;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,12 @@ public class RestauranteController {
     public ResponseEntity<Restaurante> insertarRestaurante(@RequestBody RestauranteDto restauranteDetalles){
         return new ResponseEntity<Restaurante>(restauranteService.insertarRestaurante(restauranteDetalles),HttpStatus.CREATED);
     }
-
+    @PutMapping ("/Actualizar/{id}")
+    public ResponseEntity<Restaurante> actualizarRestaurante (@PathVariable(value = "id") Long restauranteId, @RequestBody Restaurante restaurante){
+        return new ResponseEntity<Restaurante>(restauranteService.actualizarRestaurante(restauranteId, restaurante),HttpStatus.OK);
+    }
+    @DeleteMapping("/Eliminar/{id}")
+    public ResponseEntity<Restaurante> eliminarRestaurante (@PathVariable(value = "id") Long restauranteId){
+        return new ResponseEntity<Restaurante>(restauranteService.eliminarRestaurante(restauranteId),HttpStatus.OK);
+    }
 }

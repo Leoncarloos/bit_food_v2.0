@@ -1,5 +1,6 @@
 package com.upc.FOODSAVERBACKEND.Controller;
 
+import com.upc.FOODSAVERBACKEND.Model.Entities.Cliente;
 import com.upc.FOODSAVERBACKEND.Model.Entities.Plato;
 import com.upc.FOODSAVERBACKEND.Service.PlatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class PlatoController {
     @DeleteMapping ("/Eliminar/{id}")
     private ResponseEntity<Plato> eliminarPlato (@PathVariable (value = "id")Long platoId){
         return new ResponseEntity<Plato>(platoService.eliminarPlato(platoId), HttpStatus.OK);
+    }
+
+    @PutMapping("/Actualizar/{id}")
+    public ResponseEntity<Plato> actualizarPlato (@PathVariable(value = "id") Long platoId, @RequestBody Plato plato){
+        return new ResponseEntity<Plato>(platoService.actualizarPlato(platoId, plato),HttpStatus.OK);
     }
 }
